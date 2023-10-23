@@ -16,7 +16,7 @@ internal class Program
         Console.WriteLine("(1) Computer will guess your number, (No cheating! :) )");
         Console.WriteLine("(2) You will try to guess computer number");
 
-        //User options in requirements are to input 1 or 2 on keyboard. Program should not allow to input null (nothing) or any other value.
+        //User options in requirements are to input 1 or 2 on keyboard. Program should not allow to input null or any other value.
         try
         {
             int option= int.Parse(Console.ReadLine()); //Using parse for better error handling.
@@ -50,6 +50,20 @@ internal class Program
         }
     }
 
+
+    static void ComputerGuessNumber()
+    {
+        Console.WriteLine("Think of a number between 1 and 10,000.");
+        int lowerBound = 1;
+        int upperBound = 10000;
+        int guess;
+        string userResponse;
+    }
+
+    static void HumanGuessNumber()
+    {
+        Console.WriteLine("");
+    }
 
 
 
