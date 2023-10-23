@@ -24,11 +24,11 @@ internal class Program
             int option= int.Parse(Console.ReadLine()); //Using parse for better error handling.
             if (option == 1)
             {
-                Console.WriteLine("option 1");
+                ComputerGuessNumber();
             }
             else if (option == 2)
             {
-                Console.WriteLine("option 2");
+                HumanGuessNumber();
             }
             else
             {
@@ -55,8 +55,8 @@ internal class Program
     {
         //Variable initialization
         Console.WriteLine("Think of a number between 1 and 10,000.");
-        int lowerBound = 1;
-        int upperBound = 10000;
+        int min = 1;
+        int max = 10000;
         int guess;
         string userResponse;
 
@@ -65,15 +65,42 @@ internal class Program
         //For binary search, the total iterations required to find a number would be atmost log2(total_array_size)
         //log2(10 000) = 13.29, so computer should always guess our number in maximum of 14 attempts
 
+        //using do/while loop becouse i want to first block be executed atleast once.
+        do
+        {
+            //Guessing the number.
+            guess = (min + max) / 2;
+            Console.WriteLine("Computer guess is: [" + guess + "], please let computer know if his guesed number is:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("(1) Too low, (2) Too high, (3) You queesed it right!");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            userResponse = Console.ReadLine();
 
+            //Handling User response.
+            if (userResponse == "1")
+            {
+                min = guess + 1;
+            }
+            else if (userResponse == "2")
+            {
+                max = guess - 1;
+            }
+            else if (userResponse != "3")
+            {
+                Console.WriteLine("Invalid user response. Please enter number 1, 2, or 3.");
+            }
+        } while (userResponse != "3");
 
-
+        //Finishing the game.
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Computer guessed your number!!! Thank you for playing.");
+        Console.ForegroundColor = ConsoleColor.Gray;
     }
 
     //Function for User guessing Computer number game using binary serach.
     static void HumanGuessNumber()
     {
-        Console.WriteLine("");
+        Console.WriteLine("your turn");
     }
 
 }
