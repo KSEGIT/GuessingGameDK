@@ -7,18 +7,19 @@ Updated: 23 / 10 / 2023
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        //Starting with simple cmd interface.
+        //Starting with a simple cmd interface.
         Console.WriteLine("Welcome to Guessing Game Challenge\n by Daniel Kiska\n");
         Console.WriteLine("Choose a game mode option:");
         Console.WriteLine("(1) Computer will guess your number, (No cheating! :) )");
         Console.WriteLine("(2) You will try to guess computer number");
 
-        //User options in requirements are to input 1 or 2 on keyboard. Program should not allow to input null or any other value.
+        //User options in requirements are to input 1 or 2 on the keyboard. The program should not allow to input of null or any other value.
         try
         {
             int option= int.Parse(Console.ReadLine()); //Using parse for better error handling.
@@ -50,7 +51,7 @@ internal class Program
         }
     }
 
-    //Function for Computer guessing User number game using binary serach.
+    //Function for Computer guessing User number game using binary search.
     static void ComputerGuessNumber()
     {
         //Variable initialization
@@ -62,15 +63,15 @@ internal class Program
 
         //Background:
         //Binary search is an efficient algorithm for finding an item from a sorted list of items.
-        //For binary search, the total iterations required to find a number would be atmost log2(total_array_size)
-        //log2(10 000) = 13.29, so computer should always guess our number in maximum of 14 attempts
+        //For binary search, the total iterations required to find a number would be at most log2(total_array_size)
+        //log2(10 000) = 13.29, so the computer should always guess our number in a maximum of 14 attempts
 
-        //using do/while loop becouse I want to first block be executed atleast once.
+        //I'm using do/while loop because I want to first block to be executed at least once.
         do
         {
             //Guessing the number.
             guess = (min + max) / 2;
-            Console.WriteLine("Computer guess is: [" + guess + "], please let computer know if his guesed number is:");
+            Console.WriteLine("Computer guess is: [" + guess + "], please let the computer know if his guessed number is:");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("(1) Too low, (2) Too high, (3) Correct!");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -102,8 +103,8 @@ internal class Program
     {
         //Generating computer choice.
         Random random = new Random();
-        int computerChoice = random.Next(1, 10000); // Dont know what do you ment by keeping it secret? (not showing to the user?)
-        Console.WriteLine(computerChoice); //For debug only
+        int computerChoice = random.Next(1, 10000); //Dont know what you meant by keeping it secret? (not showing to the user?)
+        //Console.WriteLine(computerChoice); //For debug only
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Computer generated a random number between 1 and 10 000 try to guess it!");
         Console.ForegroundColor = ConsoleColor.Gray;
@@ -111,6 +112,7 @@ internal class Program
         //Handling user guessing
         int userGuess = 0;
 
+        //Loop for guessing computer number
         do
         {
             //Error handling for user input
@@ -119,7 +121,7 @@ internal class Program
                 Console.WriteLine("Please provide your guessed number: ");
                 userGuess = int.Parse(Console.ReadLine());
 
-                //Setting range for user input.
+                // Setting range for user input. Humans don't need to use binary search.
                 if (userGuess < 1 || userGuess > 10000)
                 {
                     Console.WriteLine("Error: Guess out of range, please provide correct number");
@@ -156,7 +158,7 @@ internal class Program
             {
                 Console.WriteLine("Error: An unexpected error occurred: " + ex.Message);
             }
-        //Keeping loop going until user guess computer number
+        //Keeping loop going until user guesses computer number
         } while (userGuess != computerChoice);
     }
 }
