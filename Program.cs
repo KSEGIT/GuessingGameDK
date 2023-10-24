@@ -109,7 +109,7 @@ internal class Program
         Console.WriteLine("Computer generated a random number between 1 and 10 000 try to guess it!");
         Console.ForegroundColor = ConsoleColor.Gray;
 
-        //Handling user guessing
+        //User guessing variable
         int userGuess = 0;
 
         //Loop for guessing computer number
